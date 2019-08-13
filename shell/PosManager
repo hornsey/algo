@@ -1,0 +1,86 @@
+#!/bin/bash
+
+APPNAME="pos"
+APPPATH="zj-pos.jar"
+PROFILE="application-pos.yml"
+
+#echo "This script runs $APPNAME as daemon"
+
+
+start_app() {
+  pid=$( ps -ef|grep $APPPATH|grep -v grep|awk {'print $2'} )
+  if [ -n "$pid" ]; then
+    echo -e "$APPNAME is \e[1;32m running \e[1;0m, pid is" $pid
+    exit 1
+  fi
+  
+  if [ -e "$APPPATH" ]; then
+	if [ -e "$PROFILE" ]; then
+		nohup java -jar -Dspring.config.location=$PROFILE $APPPATH 2>&1 |cat >/dev/null &
+	else
+		nohup java -jar $APPPATH 2>&1 |cat >/dev/null &
+	fi
+  else
+    echo -e "$APPNAME \e[1;35m not found \e[1;0m"
+    exit 2
+  fi
+}
+
+stop_app() {
+  pid=$( ps -ef|grep $APPPATH|grep -v grep|awk {'print $2'} )
+  if [ -n "$pid" ]; then
+    kill -9 $pid
+  else
+    echo -e "$APPNAME is \e[1;35m not running \e[1;0m"
+    exit 1
+  fi
+}
+
+print_status() {
+  pid=`ps -ef|grep $APPPATH|grep -v grep|awk {'print $2'}` 
+  if [ -z $pid ];then
+	echo -e "$APPNAME is \e[1;35m not running \e[1;0m"
+  else
+	echo "$APPNAME pid is" ${pid}
+  fi
+}
+
+print_version() {
+  $APPPATH -v
+}
+
+
+case "$1" in
+  start)
+    start_app
+    sleep 1
+    print_status
+    ;;
+  stop)
+    stop_app
+    sleep 1
+    print_status
+    ;;
+  restart)
+    print_status
+    stop_app
+    sleep 1
+    start_app
+    sleep 1
+    print_status
+    ;;
+  status)
+    print_status
+    ;;
+  version)
+    print_version
+    ;;
+  *)
+    echo
+    echo "Usage: $(basename "$0") (start|stop|restart|status)"
+    echo
+esac
+
+
+exit 0
+
