@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# check program mem usage
+
+if [ $# -lt 1 ]; then
+	echo "Usage: $(basename "$0") program"
+	exit 0
+fi
+
+APPNAME="$1.jar"
+
+pid=$( ps -ef|grep $APPNAME|grep -v grep|awk {'print $2'} )
+if [ -n "$pid" ]; then
+  ps -e -o 'pid,comm,pcpu,rsz,vsz,rss' |grep $pid
+  exit 1
+fi
+
