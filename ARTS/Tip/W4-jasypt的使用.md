@@ -99,6 +99,22 @@ public class JasyptSimpleIntegrationTest {
 
 
 ## 6、加密函数
-在5.4节的testPBECli函数，可以生成使用jasypt加密后的密文。加密中使用到了sha256算法，因此每次加密的结果都不一样。
-
-
+```
+public static void main(String[] args) {
+    // 创建加密对象，默认 PBEWithMD5AndDES
+    BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+    // 加密所需的密钥
+    textEncryptor.setPassword("password");
+    // 加密后的数据（数据库的用户名或密码）
+    String encData = textEncryptor.encrypt("Password@1");
+    // 解密后的数据（原数据）
+    String decData = textEncryptor.decrypt(encData);
+    System.out.println("encData: " + encData);
+    System.out.println("decData: " + decData);
+}
+```
+输出：
+```
+encData: uK6xyed60q9NlSBAVb0pFyxA23TYFgtQ
+decData: Password@1
+```

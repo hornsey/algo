@@ -11,6 +11,14 @@
 - **Share**：分享一篇有观点和思考的技术文章。
 
 
+
+## W4
+- **Algorithm**：[17.电话号码的字母组合]()
+- **Review**：[如何提高解决问题能力]()
+- **Tip/Techni**：[jasypt的使用]()
+- **Share**：[Netty入门——手写Dubbo框架](https://blog.csdn.net/nalw2012/article/details/100055100)
+
+
 ## W3
 - **Algorithm**：[120. 三角形最小路径和](https://github.com/hornsey/ARTS/blob/master/Algorithm/W3-Q120%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C.md)
 - **Review**：[如何提高解决问题能力](https://github.com/hornsey/ARTS/blob/master/Review/W3-%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E8%83%BD%E5%8A%9B.md)
