@@ -13,9 +13,9 @@
 
 
 ## W4
-- **Algorithm**：[17.电话号码的字母组合]()
-- **Review**：[如何提高解决问题能力]()
-- **Tip/Techni**：[jasypt的使用]()
+- **Algorithm**：[17.电话号码的字母组合](https://github.com/hornsey/algo/blob/master/ARTS/Algorithm/W4-Q17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88.md)
+- **Review**：[使用WSO2 API Manager保护API](https://github.com/hornsey/algo/blob/master/ARTS/Review/W4-%E4%BD%BF%E7%94%A8WSO2%20Manager%E4%BF%9D%E6%8A%A4API.md)
+- **Tip/Techni**：[jasypt的使用](https://github.com/hornsey/algo/blob/master/ARTS/Tip/W4-jasypt%E7%9A%84%E4%BD%BF%E7%94%A8.md)
 - **Share**：[Netty入门——手写Dubbo框架](https://blog.csdn.net/nalw2012/article/details/100055100)
 
 
