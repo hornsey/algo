@@ -53,16 +53,16 @@ public class C11Sort {
 		}
 
 		for (int i = 1; i < n; i++) {
-			int tmp = nums[i];
+			int value = nums[i];
 			int j = i-1;
-			for (; j >= 0; j--) {
-				if (nums[j] > tmp) {
+			for (; j >= 0 ; j--) {
+				if (nums[j] > value) {
 					nums[j+1] = nums[j];
 				} else {
 					break;
 				}
 			}
-			nums[j+1] = tmp;
+			nums[j+1] = value;
 		}
 	}
 
@@ -78,7 +78,6 @@ public class C11Sort {
 		if (n < 1) {
 			return;
 		}
-
 
 		for (int i = 0; i < n; i++) {
 			int tmp = nums[i];
@@ -101,8 +100,8 @@ public class C11Sort {
 		System.out.println(Arrays.toString(nums));
 
 //		bubbleSort(nums, nums.length);
-//		insertionSort(nums, nums.length);
-		selectionSort(nums, nums.length);
+		insertionSort(nums, nums.length);
+//		selectionSort(nums, nums.length);
 		System.out.println(Arrays.toString(nums));
 	}
 }
