@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Singleton3 {
 	private AtomicLong id = new AtomicLong(0);
 	private static volatile Singleton3 instance = null;
+
 	private Singleton3() {
 	}
 
@@ -19,6 +20,25 @@ public class Singleton3 {
 			synchronized (Singleton3.class) {
 				if (instance == null) {
 					instance = new Singleton3();
+				}
+			}
+		}
+		return instance;
+	}
+
+	/**
+	 * 优化版
+	 *
+	 * @return
+	 */
+	public static Singleton3 getInstance2() {
+		Singleton3 temp = instance;
+		if (null == temp) {
+			synchronized (Singleton3.class) {
+				temp = instance;
+				if (null == temp) {
+					temp = new Singleton3();
+					instance = temp;
 				}
 			}
 		}
