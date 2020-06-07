@@ -1,4 +1,4 @@
-package com.hornsey.patterndesign.observerpattern;
+package com.hornsey.patterndesign.observer;
 
 import java.util.Random;
 
