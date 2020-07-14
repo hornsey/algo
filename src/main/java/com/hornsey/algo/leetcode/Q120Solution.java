@@ -27,26 +27,25 @@ public class Q120Solution {
 
 	public static int minimumTotal(List<List<Integer>> triangle) {
 		int h = triangle.size();
-		int[][] values = new int[h][h];
 
-		values[0][0] = triangle.get(0).get(0);
-		for (int i=1; i<h; i++) {
-			values[i][0] = values[i-1][0] + triangle.get(i).get(0);
-			values[i][i] = values[i-1][i-1] + triangle.get(i).get(i);
-			for (int j = 1; j<h-1 && j < i; j++) {
-				int v1 = values[i-1][j-1] + triangle.get(i).get(j);
-				int v2 = values[i-1][j] + triangle.get(i).get(j);
-				values[i][j] = v1 < v2 ? v1 : v2;
+		int[] dp = new int[h];
+		dp[0] = triangle.get(0).get(0);
+
+		for (int i = 1; i < h; i++) {
+			dp[i] = dp[i-1] + triangle.get(i).get(i);
+			for (int j = i-1; j >0; j--) {
+				dp[j] = Math.min(dp[j-1],dp[j]) + triangle.get(i).get(j);
 			}
+			dp[0] = dp[0] + triangle.get(i).get(0);;
 		}
 
-		int minValue = Integer.MAX_VALUE;
-		for (int i = 0; i<h; i++) {
-			if (values[h-1][i] < minValue) {
-				minValue = values[h-1][i];
+		int result = dp[0];
+		for (int i = 1; i < h; i++) {
+			if (dp[i] < result) {
+				result = dp[i];
 			}
 		}
-		return minValue;
+		return result;
 	}
 
 	public static void main(String[] args) {
@@ -55,6 +54,7 @@ public class Q120Solution {
 		list.add(Arrays.asList(3,4));
 		list.add(Arrays.asList(5,6,7));
 		list.add(Arrays.asList(3,1,4,8));
+//		[[-1],[-2,-3]]
 
 		int value = Q120Solution.minimumTotal(list);
 		System.out.println("value = " + value);
