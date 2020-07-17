@@ -7,9 +7,12 @@ import com.google.common.collect.Lists;
 import com.hornsey.effectivejava.chapter2.PhoneNumber;
 import lombok.val;
 import org.ipanda.common.utils.serialize.JsonHelper;
+import org.omg.CORBA.Object;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author huangtao
@@ -18,17 +21,15 @@ import java.util.*;
 public class Test {
 	public static void main(String[] args) {
 
-		Test test = new Test();
-//		System.out.println();
+//		Test test = new Test();
+		Object[] nums = new Object[10];
+		System.out.println(nums.length);
 
-		Map<Integer, Integer> map = new HashMap<>();
-		map.merge(1, 1, Integer::sum);
-		map.merge(1, 1, Integer::sum);
-		System.out.println(map);
-
-		for (Integer entry : map.keySet()) {
-
+		for (int i = 5; i < 10; i++) {
+			nums[i] = null;
 		}
+		System.out.println(nums.length);
+
 	}
 
 	public double myPow(double x, int n) {
