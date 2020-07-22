@@ -6,29 +6,31 @@ import java.util.List;
 /**
  * @author huangtao
  * @date 2020/7/20
- * @version 3
+ * @version 4
  */
 public class Q78Solution {
 	public List<List<Integer>> subsets(int[] nums) {
 		List<List<Integer>> res = new ArrayList<>();
+		int n = nums.length;
 
-		backtrace(nums, 0, new ArrayList<>(), res);
+		for (int i = (int)Math.pow(2, n); i < Math.pow(2, n+1); i++) {
+			String bitmask = Integer.toBinaryString(i).substring(1);
+			System.out.println(bitmask);
+
+			List<Integer> cur = new ArrayList<>();
+			for (int j = 0; j < n; j++) {
+				if (bitmask.charAt(j) == '1') {
+					cur.add(nums[j]);
+				}
+			}
+			res.add(cur);
+		}
 
 		return res;
 	}
 
-	private void backtrace(int[] nums, int start,  List<Integer> cur, List<List<Integer>> res) {
-		res.add(new ArrayList<>(cur));
-
-		for (int i = start; i < nums.length; i++) {
-			cur.add(nums[i]);
-			backtrace(nums, i+1, cur, res);
-			cur.remove(cur.size()-1);
-		}
-	}
-
 	public static void main(String[] args) {
-		int[] nums = new int[]{1,2,3};
+		int[] nums = new int[]{1,2,3,4,5,6};
 		Q78Solution solution = new Q78Solution();
 		List<List<Integer>> subsets = solution.subsets(nums);
 		for (List<Integer> subset : subsets) {
