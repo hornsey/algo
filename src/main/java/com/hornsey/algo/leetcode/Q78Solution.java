@@ -8,24 +8,18 @@ import java.util.List;
  * @date 2020/7/20
  */
 public class Q78Solution {
-	private List<List<Integer>> res;
-	private List<Integer> path;
 	public List<List<Integer>> subsets(int[] nums) {
-		res = new ArrayList<>();
-		path = new ArrayList<>();
+		List<List<Integer>> res = new ArrayList<>();
+		res.add(new ArrayList<>());
 
-		backtrace(nums, path,0);
-		return res;
-	}
-
-	private void backtrace(int[] nums, List<Integer> path, int start) {
-		res.add(new ArrayList<>(path));
-
-		for (int i = start; i < nums.length; i++) {
-			path.add(nums[i]);
-			backtrace(nums, path, i+1);
-			path.remove(path.size()-1);
+		for (Integer num : nums) {
+			List<List<Integer>> curRes = new ArrayList<>(res);
+			for (List<Integer> list : curRes) {
+				res.add(new ArrayList<Integer>(list){{add(num);}});
+			}
 		}
+
+		return res;
 	}
 
 	public static void main(String[] args) {
