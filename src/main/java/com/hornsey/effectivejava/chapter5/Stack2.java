@@ -1,7 +1,8 @@
 package com.hornsey.effectivejava.chapter5;
 
-import java.util.Arrays;
-import java.util.EmptyStackException;
+import com.google.common.collect.Lists;
+
+import java.util.*;
 
 /**
  * @author huangtao
@@ -41,15 +42,36 @@ public class Stack2<E> {
 		return size == 0;
 	}
 
+	public void pushAll(Iterable<? extends E> src) {
+		for (E e : src) {
+			push(e);
+		}
+	}
+
+	public void popAll(Collection<? super E> dst) {
+		while (!isEmpty()) {
+			dst.add(pop());
+		}
+	}
+
 	public static void main(String[] args) {
 		Stack2<Integer> stack2 = new Stack2<>();
 		stack2.push(3);
 		stack2.push(5);
 		stack2.push(8);
 
-		while (!stack2.isEmpty()) {
-			System.out.println(stack2.pop());
-		}
+		List<Integer> list = Lists.newArrayList(1,2,4);
+		stack2.pushAll(list);
+
+		List<Number> dst = new ArrayList<>();
+		stack2.popAll(dst);
+
+//		while (!stack2.isEmpty()) {
+//			System.out.println(stack2.pop());
+//		}
+
+
+		System.out.println(dst);
 	}
 
 }

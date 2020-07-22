@@ -21,14 +21,10 @@ import java.util.stream.IntStream;
 public class Test {
 	public static void main(String[] args) {
 
-//		Test test = new Test();
-		Object[] nums = new Object[10];
-		System.out.println(nums.length);
+		UUID uuid = UUID.randomUUID();
+		System.out.println(uuid);
 
-		for (int i = 5; i < 10; i++) {
-			nums[i] = null;
-		}
-		System.out.println(nums.length);
+//		Test test = new Test();
 
 	}
 
