@@ -21,8 +21,11 @@ import java.util.stream.IntStream;
 public class Test {
 	public static void main(String[] args) {
 
-		UUID uuid = UUID.randomUUID();
-		System.out.println(uuid);
+		int diff = 'A' - 'a';
+		StringBuilder sb = new StringBuilder();
+		String s = "hello";
+		sb.append((char)(s.charAt(0)+diff));
+		System.out.println(sb.toString());
 
 //		Test test = new Test();
 
