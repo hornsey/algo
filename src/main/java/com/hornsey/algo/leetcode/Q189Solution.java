@@ -3,19 +3,25 @@ package com.hornsey.algo.leetcode;
 /**
  * @author huangtao
  * @date 2020/8/16
- * @version 2
+ * @version 3
  */
 public class Q189Solution {
 	public void rotate(int[] nums, int k) {
 		int n = nums.length;
-		if (n < k) {
-			k %= n;
+		k %= n;
+
+		int count = 0;
+		for (int i = 0; i < k && count < n; i++) {
+			int curr = i;
+			int prev = nums[i];
+			do {
+				int next = (curr + k) % n;
+				int temp = nums[next];
+				nums[next] = prev;
+				prev = temp;
+				curr = next;
+				count++;
+			} while (i != curr);
 		}
-		int[] temp = new int[k];
-
-		System.arraycopy(nums, n-k, temp, 0, k);
-		System.arraycopy(nums, 0, nums, k, n - k);
-		System.arraycopy(temp, 0, nums, 0, k);
-
 	}
 }
