@@ -10,12 +10,11 @@ public class Q26Solution {
 		if (n < 2) {
 			return n;
 		}
-		int pos = 1;
+		int pos = 0;
 		for (int i = 1; i < n; i++) {
-			if (nums[i-1] == nums[i]) {
-				continue;
+			if (nums[i] != nums[pos]) {
+				nums[++pos] = nums[i];
 			}
-			nums[pos++] = nums[i];
 		}
 		return pos;
 	}
