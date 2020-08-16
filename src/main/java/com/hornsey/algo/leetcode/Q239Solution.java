@@ -24,7 +24,7 @@ public class Q239Solution {
 
 			deque.offer(i);
 			if (i >= k - 1) {
-				res[i - k + 1] = nums[deque.peek()];
+				res[i - k + 1] = nums[deque.getFirst()];
 			}
 		}
 
