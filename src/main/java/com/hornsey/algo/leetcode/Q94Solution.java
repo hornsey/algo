@@ -13,23 +13,26 @@ import java.util.List;
 public class Q94Solution {
 	public List<Integer> inorderTraversal(TreeNode root) {
 		List<Integer> res = new ArrayList<>();
-		Deque<TreeNode> deque = new ArrayDeque<>();
+		TreeNode curr = root;
+		TreeNode pre;
 
-		TreeNode tmp = root;
-		while (tmp != null || !deque.isEmpty()) {
-			while (tmp != null) {
-				deque.push(tmp);
-				tmp = tmp.left;
+		while (curr != null) {
+			if (curr.left == null) {
+				res.add(curr.val);
+				curr = curr.right;
+			} else {
+				pre = curr.left;
+				while (pre.right != null) {
+					pre = pre.right;
+				}
+				pre.right = curr;
+				TreeNode temp = curr;
+				curr = curr.left;
+				temp.left = null;
 			}
-			tmp = deque.pop();
-			res.add(tmp.val);
-			tmp = tmp.right;
 		}
 
 		return res;
 	}
-
-
-
 
 }
