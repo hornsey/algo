@@ -1,6 +1,4 @@
-package com.hornsey.algo.leetcode;
-
-import com.hornsey.Test;
+package com.hornsey.algo.util;
 
 /**
  * @author huangtao

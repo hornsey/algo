@@ -1,4 +1,4 @@
-package com.hornsey.algo.leetcode;
+package com.hornsey.algo.util;
 
 /**
  * @author huangtao
