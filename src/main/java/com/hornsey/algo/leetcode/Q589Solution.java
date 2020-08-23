@@ -2,12 +2,16 @@ package com.hornsey.algo.leetcode;
 
 import com.hornsey.algo.util.Node;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 /**
+ * bfs前序遍历
  * @author huangtao
  * @date 2020/8/23
+ * @version 3
  */
 public class Q589Solution {
 	public List<Integer> preorder(Node root) {
@@ -16,17 +20,17 @@ public class Q589Solution {
 			return res;
 		}
 
-		dfs(root, res);
+		Deque<Node> stack = new ArrayDeque<>();
+		stack.push(root);
+		while (!stack.isEmpty()) {
+			Node tmp = stack.pop();
+			res.add(tmp.val);
+			int size = tmp.children.size();
+			for (int i = size-1; i >= 0; i--) {
+				stack.push(tmp.children.get(i));
+			}
+		}
 		return res;
 	}
 
-	private void dfs(Node root, List<Integer> res) {
-		if (root == null) {
-			return;
-		}
-		res.add(root.val);
-		for (Node child : root.children) {
-			dfs(child, res);
-		}
-	}
 }
